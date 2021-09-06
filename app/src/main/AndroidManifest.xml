@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SwagUp">
         <activity
+            android:name=".RegistrationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity
             android:name=".DressUp"
             android:exported="true" />
         <activity
