@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SwagUp">
         <activity
+            android:name=".UserActivity"
+            android:exported="true" />
+        <activity
             android:name=".DressUp"
             android:exported="true" />
         <activity
