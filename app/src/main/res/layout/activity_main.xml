@@ -17,15 +17,7 @@
         android:textStyle="bold"
         android:text="swagUpToday" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/attireEditText"
-        android:background="@color/white"
-        android:layout_marginBottom="10dp"
-        android:padding="5dp"
-        android:hint="Enter Occasion"
-        android:layout_centerHorizontal="true" />
+
 
     <Button
         android:id="@+id/findAttiresButton"
