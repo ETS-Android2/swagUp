@@ -43,7 +43,7 @@ public class DressUp extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent i = new Intent(DressUp.this, UserActivity.class);
+                Intent i = new Intent(DressUp.this, ClothesActivity.class);
                 i.putExtra("name",name[position]);
                 i.putExtra("imageid",imageId[position]);
                 startActivity(i);
