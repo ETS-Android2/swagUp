@@ -5,7 +5,6 @@
       <map>
         <entry key="app/src/main/res/drawable/bg_signup.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/et_bg.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_biometric.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_dress_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_dressup.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_list_item.xml" value="0.15760869565217392" />
