@@ -41,7 +41,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class ClothesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RecycleViewClickListener {
+public class ClothesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RecycleViewClickListener {
 
     static final float END_SCALE = 0.7f;
     ImageView menuIcon;
@@ -68,7 +68,7 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
 
     int pageNumber = 1;
 
-    String url = "\"https://api.pexels.com/v1/curated?page=" + pageNumber + "&per_page=80";
+    String url = "https://api.pexels.com/v1/curated?page=" + pageNumber + "&per_page=25";
     private Object ImagesAdapter;
 
     @Override
@@ -81,6 +81,11 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
+
+        navigationDrawer();
+        //navigation drawer profile
+        View headerView = navigationView.getHeaderView(0);
+
 
 
         recyclerView = findViewById(R.id.recycleView);
@@ -155,6 +160,8 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
 
                 }
              });
+        //animation in the drawer
+        animateNavigationDrawer();
     }
 
     private void animateNavigationDrawer() {
@@ -192,13 +199,15 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
     }
 
 
-//    @Override
-//    public void onBackPressed() {
-//        if (drawerLayout.isDrawerVisible(GravityCompat.START)){
-//            DrawerLayout.closeDrawer(GravityCompat.START);
-//        }
-//        super.onBackPressed();
-//    }
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -230,10 +239,10 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
         suggestedModels.add(new SuggestedModel(R.drawable.image3, "Trending"));
         suggestedModels.add(new SuggestedModel(R.drawable.a, "Men casual"));
         suggestedModels.add(new SuggestedModel(R.drawable.b, "Women casual"));
-        suggestedModels.add(new SuggestedModel(R.drawable.c, "official wear"));
-        suggestedModels.add(new SuggestedModel(R.drawable.d, "beach wear"));
-        suggestedModels.add(new SuggestedModel(R.drawable.e, "men shoes"));
-        suggestedModels.add(new SuggestedModel(R.drawable.f, "women shoes"));
+        suggestedModels.add(new SuggestedModel(R.drawable.e, "Official wear"));
+        suggestedModels.add(new SuggestedModel(R.drawable.d, "Beach wear"));
+        suggestedModels.add(new SuggestedModel(R.drawable.e, "Men shoes"));
+        suggestedModels.add(new SuggestedModel(R.drawable.f, "Women shoes"));
         suggestedModels.add(new SuggestedModel(R.drawable.g, "Fashion"));
 
 
@@ -242,6 +251,7 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
 
     private void fetchImage() {
         //fetch image url and name from the pexels api
+
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -287,7 +297,7 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
 
 
                 HashMap<String, String> params = new HashMap<String, String>();
-                params.put("Authorization", " 563492ad6f91700001000001fbc5d384685a46609f2807fe967b7787");
+                params.put("Authorization","563492ad6f91700001000001fbc5d384685a46609f2807fe967b7787");
                 return params;
 
             }
@@ -349,7 +359,7 @@ public abstract class ClothesActivity extends AppCompatActivity implements Navig
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }
-                        };
+                        }
 
 
-    }
+}
