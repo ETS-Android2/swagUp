@@ -21,155 +21,162 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/content_view"
-        android:background="@color/white">
-
-        <RelativeLayout
-            android:id="@+id/suggestedRL1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
-
-        <TextView
-            android:id="@+id/appName"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="@string/swagup"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <RelativeLayout
+        android:background="@drawable/bg_signup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeFirst"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="10dp">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:id="@+id/menu_icon"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/app_name"/>
-<!--            android:src=""/>-->
-
-    </RelativeLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:orientation="vertical"
+            android:id="@+id/relativeFirst"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
+
+            <ImageView
+                android:id="@+id/menu_icon"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:text="@string/swagup"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="40dp"
-                    android:elevation="8dp"
-                    android:background="@drawable/card">
+                    android:layout_height="wrap_content">
 
-
-                    <EditText
-                        android:id="@+id/searchEv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="15dp"
-                        android:backgroundTint="@color/white"
-                        android:cursorVisible="true"
-                        android:fontFamily="sans-serif"
-                        android:hint="@string/search_attire_here"
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:id="@+id/search_image"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="15dp"
-                        android:contentDescription="@string/app_name"/>
-<!--                        android:src=""/>-->
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/suggestedRecyclerView"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="-20dp" />
+                        android:layout_height="40dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="40dp"
+                        android:elevation="8dp"
+                        android:background="@drawable/card">
+
+                        <EditText
+                            android:id="@+id/searchEv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:backgroundTint="@color/white"
+                            android:cursorVisible="true"
+                            android:fontFamily="sans-serif"
+                            android:hint="@string/search_attire_here"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/search_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_search_24"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:contentDescription="@string/app_name" />
+                        <!--                        android:src=""/>-->
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/suggestedRL" />
+                <RelativeLayout
+                    android:id="@+id/suggestedRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/suggestedTitle"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/suggested"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:id="@+id/suggestedRecyclerView"
+                        android:layout_below="@+id/suggestedTitle"
+                        android:layout_marginTop="10dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/suggestedRL1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/suggestedTitle"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/suggested"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:layout_marginTop="10dp">
 
-        </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/topMostTitle"
+                        android:layout_marginStart="5dp"
+                        android:text="Trending"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
 
-    <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/topMostTitle"
-                android:layout_marginStart="5dp"
-                android:text="Trending"
-                android:textColor="@color/black"
-                android:textSize="16sp"/>
+                    <ProgressBar
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/progress_bar"
+                        android:layout_marginStart="20dp"
 
-            <ProgressBar
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/progress_bar"
-                android:layout_marginStart="20dp"
-                android:indeterminateTint="@color/black"/>
-<!--                android:visibility="gone"/>-->
+                        android:indeterminateTint="@color/black"
+                        android:visibility="gone"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recycleView"
-                android:layout_below="@+id/topMostTitle"
-                android:layout_marginTop="10dp" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recycleView"
+                        android:layout_below="@+id/topMostTitle"
+                        android:layout_marginTop="10dp" />
+
+                </RelativeLayout>
 
 
+            </LinearLayout>
 
 
 
+        </androidx.core.widget.NestedScrollView>
 
-
-
-
-
+    </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
