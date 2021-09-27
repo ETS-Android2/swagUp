@@ -29,8 +29,8 @@ public class BiometricActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                        .setTitle("Please Verify")
-                        .setDescription("User Authentication is required to proceed")
+                        .setTitle("Place Your fingerprint")
+                        .setDescription("User fingerprint is required to proceed")
                         .setNegativeButtonText("Cancel")
                         .build();
                 getPrompt().authenticate(promptInfo);
