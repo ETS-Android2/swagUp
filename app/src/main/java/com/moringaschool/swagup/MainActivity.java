@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "FIND!", Toast.LENGTH_LONG).show();
-                Intent signup = new Intent(MainActivity.this, Signup.class);
-                startActivity(signup);
+                Intent dressup = new Intent(MainActivity.this, DressUp.class);
+                startActivity(dressup);
             }
         });
     }}
