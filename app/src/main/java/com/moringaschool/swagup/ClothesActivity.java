@@ -68,7 +68,7 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
     int pageNumber = 1;
 
-    String url = "https://api.pexels.com/v1/curated?page=" + pageNumber + "&per_page=25";
+    String url = "https://api.pexels.com/v1/curated?page=" + pageNumber + "&per_page=5";
     private Object ImagesAdapter;
 
     @Override
@@ -312,49 +312,49 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
                             progressBar.setVisibility(View.VISIBLE);
                             if(position == 0) {
                                 replaceTitle.setText("Trending");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=trending";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=trending";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }else if (position == 1) {
                                 replaceTitle.setText("Men casual");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=men casual";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=men casual";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }else if (position == 2) {
                                 replaceTitle.setText("women casual");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=women casual";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=women casual";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }else if (position == 3) {
                                 replaceTitle.setText("official wear");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=official wear";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=official wear";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }else if (position == 4) {
                                 replaceTitle.setText("beach wear");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=beach wear";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=beach wear";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }else if (position == 5) {
                                 replaceTitle.setText("men shoes");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=men shoes";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=men shoes";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }else if (position == 6) {
                                 replaceTitle.setText("women shoes");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=women shoes";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=women shoes";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
                             }else if (position == 7) {
                                 replaceTitle.setText("fashion");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=fashion";
+                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=fashion";
                                 imagesModelList.clear();
                                 fetchImage();
                                 progressBar.setVisibility(View.GONE);
