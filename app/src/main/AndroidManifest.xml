@@ -10,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SwagUp" >
         <activity
-            android:name=".Signup"
-            android:exported="true" />
-        <activity
-            android:name=".UserActivity"
-            android:exported="true" />
-        <activity
             android:name=".DressUp"
             android:exported="true" />
         <activity
+            android:name=".Signup"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BiometricActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
