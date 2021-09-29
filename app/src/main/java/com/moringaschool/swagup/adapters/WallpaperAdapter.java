@@ -3,7 +3,6 @@ package com.moringaschool.swagup.adapters;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,34 +12,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.moringaschool.swagup.ImageModel;
+import com.moringaschool.swagup.models.WallpaperModel;
 import com.moringaschool.swagup.R;
 
 import java.util.List;
 
 
-public class ImagesAdapter extends RecyclerView.Adapter<ImagesViewHolder> {
+public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> {
 
     private Context context;
-    private List<ImageModel> imagesModelList;
+    private List<WallpaperModel> wallpaperModelList;
 
-    public ImagesAdapter(Context context, List<ImageModel> imagesModelList) {
+    public WallpaperAdapter(Context context, List<WallpaperModel> wallpaperModelList) {
         this.context = context;
-        this.imagesModelList = imagesModelList;
+        this.wallpaperModelList= wallpaperModelList;
     }
 
     @NonNull
     @Override
-    public ImagesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_image_item,parent,false);
-
-        return new ImagesViewHolder(view);
+    public WallpaperViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_wallpaper_item,parent,false);
+        return new WallpaperViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImagesViewHolder holders, int position) {
-        final ImagesViewHolder holder = holders;
-        ImageModel model = imagesModelList.get(position);
+    public void onBindViewHolder(@NonNull WallpaperViewHolder holders, int position) {
+        final WallpaperViewHolder holder = holders;
+        WallpaperModel model = wallpaperModelList.get(position);
 
         Glide.with(context).load(model.getMediumUrl()).into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener() {
@@ -54,16 +52,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesViewHolder> {
 
     @Override
     public int getItemCount() {
-        return imagesModelList.size();
+        return wallpaperModelList.size();
     }
 };
 
-class ImagesViewHolder extends RecyclerView.ViewHolder{
+class WallpaperViewHolder extends RecyclerView.ViewHolder{
 
     ImageView imageView;
     TextView photographerName;
 
-    public ImagesViewHolder(@NonNull View itemView) {
+    public WallpaperViewHolder(@NonNull View itemView) {
         super((itemView));
 
         imageView = itemView.findViewById(R.id.imageViewItem);

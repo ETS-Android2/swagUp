@@ -1,16 +1,15 @@
-package com.moringaschool.swagup;
+package com.moringaschool.swagup.models;
 
-import retrofit2.http.PUT;
-
-public class ImageModel {
+public class WallpaperModel {
     private int id;
     private String originalUrl,mediumUrl,photographerName;
 
-    public ImageModel(){
+    public WallpaperModel() {
 
     }
-    public ImageModel(int id, String originalUrl, String mediumUrl, String photographerName){
-        this.id = id;
+
+    public WallpaperModel(int id,String OriginalUrl, String mediumUrl, String photographerName)   {
+        this.id= id;
         this.originalUrl = originalUrl;
         this.mediumUrl = mediumUrl;
         this.photographerName = photographerName;
