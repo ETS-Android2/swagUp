@@ -52,7 +52,7 @@ public class BiometricActivity extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 notifyUser("Authentication Succeeded!!!");
-                Intent intent = new Intent(BiometricActivity.this,MainActivity.class);
+                Intent intent = new Intent(BiometricActivity.this,Signup.class);
                 startActivity(intent);
 
             }
