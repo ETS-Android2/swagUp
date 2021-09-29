@@ -1,4 +1,4 @@
-package com.moringaschool.swagup;
+package com.moringaschool.swagup.models;
 
 public class SuggestedModel {
     int image;
