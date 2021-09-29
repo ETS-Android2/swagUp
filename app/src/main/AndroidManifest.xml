@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moringaschool.swagup" >
+    package="com.moringaschool.swagup">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -8,22 +16,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SwagUp" >
+        android:theme="@style/Theme.SwagUp">
+        <activity
+            android:name=".AnimationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ClothesActivity"
+            android:exported="true" />
         <activity
             android:name=".DressUp"
             android:exported="true" />
         <activity
-            android:name=".Signup"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".RegisterUser"
+            android:exported="true" />
+        <activity
+            android:name=".Signup"
             android:exported="true" />
         <activity
             android:name=".BiometricActivity"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
