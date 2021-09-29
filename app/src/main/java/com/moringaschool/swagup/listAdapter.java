@@ -38,9 +38,9 @@ public class listAdapter extends ArrayAdapter<User> {
         TextView userName = convertView.findViewById(R.id.imageName);
         TextView text = convertView.findViewById(R.id.message);
 
-        imageView.setImageResource(user.imageid);
-        userName.setText(user.name);
-        text.setText(user.message);
+//        imageView.setImageResource(user.imageid);
+//        userName.setText(user.name);
+//        text.setText(user.message);
 
 
         return convertView;
