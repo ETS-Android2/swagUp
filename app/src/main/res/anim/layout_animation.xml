@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layoutAnimation xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    android:delay="15%"
+    android:animationOrder ="normal"
+    android:animation="@anim/zoom_out">
+
+</layoutAnimation>

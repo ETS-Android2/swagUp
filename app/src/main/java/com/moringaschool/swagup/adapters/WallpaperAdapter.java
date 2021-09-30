@@ -1,6 +1,8 @@
 package com.moringaschool.swagup.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.moringaschool.swagup.FullScreenWallpaper;
 import com.moringaschool.swagup.models.WallpaperModel;
 import com.moringaschool.swagup.R;
 
@@ -36,14 +39,17 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WallpaperViewHolder holders, int position) {
-        final WallpaperViewHolder holder = holders;
-        WallpaperModel model = wallpaperModelList.get(position);
+    public void onBindViewHolder(@NonNull WallpaperViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
-        Glide.with(context).load(model.getMediumUrl()).into(holder.imageView);
+//        final WallpaperViewHolder holder = holders;
+//        WallpaperModel model = wallpaperModelList.get(position);
+
+        Glide.with(context).load(wallpaperModelList.get(position).getMediumUrl()).into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+              context.startActivity(new Intent(context, FullScreenWallpaper.class)
+              .putExtra("originalUrl",wallpaperModelList.get(position).getOriginalUrl()));
                 Toast.makeText(context, "clicked!!!", Toast.LENGTH_SHORT).show();
             }
 

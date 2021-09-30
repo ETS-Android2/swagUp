@@ -140,6 +140,7 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
         searchIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(ClothesActivity.this, "search Button Clicked", Toast.LENGTH_SHORT).show();
 
             }
@@ -312,7 +313,7 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public void onItemClick(int position) {
-        progressBar.setVisibility(View.VISIBLE);
+           progressBar.setVisibility(View.VISIBLE);
         if (position == 0) {
             replaceTitle.setText("Men casual ");
             url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=men casual";
