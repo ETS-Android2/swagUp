@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.moringaschool.swagup.ClothesActivity;
 import com.moringaschool.swagup.R;
 import com.moringaschool.swagup.interfaces.RecycleViewClickListener;
-import com.moringaschool.swagup.SuggestedModel;
+import com.moringaschool.swagup.models.SuggestedModel;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Sugg
     final private RecycleViewClickListener clickListener;
 
 
-    public SuggestedAdapter(ArrayList<SuggestedModel> suggestedModels, ClothesActivity clothesActivity, RecycleViewClickListener clickListener) {
+    public SuggestedAdapter(ArrayList<SuggestedModel> suggestedModels, RecycleViewClickListener clickListener) {
         this.clickListener = clickListener;
         this.suggestedModels= suggestedModels;
     }
@@ -31,7 +31,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Sugg
 
     @NonNull
     @Override
-    public SuggestedAdapter.SuggestedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SuggestedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.suggested_items,parent,false);
         final SuggestedViewHolder suggestedViewHolder = new SuggestedViewHolder(view);
@@ -39,7 +39,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Sugg
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SuggestedAdapter.SuggestedViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SuggestedViewHolder holder, int position) {
         SuggestedModel suggestedModel = suggestedModels.get(position);
         holder.image.setImageResource(suggestedModel.getImage());
         holder.title.setText(suggestedModel.getTitle());

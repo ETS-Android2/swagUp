@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "787840513483",
-    "project_id": "swagup-89956",
-    "storage_bucket": "swagup-89956.appspot.com"
+    "project_number": "887527293544",
+    "firebase_url": "https://swagup-964e0-default-rtdb.firebaseio.com",
+    "project_id": "swagup-964e0",
+    "storage_bucket": "swagup-964e0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:787840513483:android:f367ba39f05893c8f0724e",
+        "mobilesdk_app_id": "1:887527293544:android:d0355b8f2c5234ca8eb1dd",
         "android_client_info": {
           "package_name": "com.moringaschool.swagup"
         }
       },
       "oauth_client": [
         {
-          "client_id": "787840513483-hn90j8183q1m6otn8tvjk9fjku5emmur.apps.googleusercontent.com",
+          "client_id": "887527293544-sifr4h3einc317qbenvdpftfhjjkkndb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.swagup",
+            "certificate_hash": "ed2334f45660f80eacdcfb6b6edce75ac22d8423"
+          }
+        },
+        {
+          "client_id": "887527293544-ithbqv99uk867d9o08vbahmv25i82bhe.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAhyl9PxWIQsbvP7dOFAHHBmiAJdKzvB2A"
+          "current_key": "AIzaSyCq5mLOq95gtX_vZw78Azof5mI6F4XwWlo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "787840513483-hn90j8183q1m6otn8tvjk9fjku5emmur.apps.googleusercontent.com",
+              "client_id": "887527293544-ithbqv99uk867d9o08vbahmv25i82bhe.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

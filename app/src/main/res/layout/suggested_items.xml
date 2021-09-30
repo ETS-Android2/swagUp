@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/suggestedTitle"
-            android:text="men"
+            android:text="Nature"
             android:textSize="14sp"
             android:fontFamily="sans-serif-bold"
             android:layout_centerVertical="true"

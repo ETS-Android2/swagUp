@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,15 +24,15 @@ public class DressUp extends AppCompatActivity {
         binding = ActivityDressupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        int[] imageId = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,R.drawable.f,R.drawable.g};
+        int[] picId = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,R.drawable.f,R.drawable.g};
         String[] name = {"men","unisex","ladies","dope","business","swagger","men"};
         String[] message= {"casual","hangout","dinner dress","swag","official","boot up","casoffice"};
 
         ArrayList<User> userArrayList = new ArrayList<>();
 
-        for(int i=0; i< imageId.length;i++){
-            User user = new User(name[i],message[i],imageId[i]);
-            userArrayList.add(user);
+        for(int i=0; i< picId.length;i++){
+//            User user = new User(name[i],message[i],picId[i]);
+//            userArrayList.add(user);
         }
 
         ListAdapter la = new listAdapter(DressUp.this,userArrayList);
@@ -45,7 +46,7 @@ public class DressUp extends AppCompatActivity {
 
                 Intent i = new Intent(DressUp.this, ClothesActivity.class);
                 i.putExtra("name",name[position]);
-                i.putExtra("imageid",imageId[position]);
+                i.putExtra("imageid",picId[position]);
                 startActivity(i);
 
             }

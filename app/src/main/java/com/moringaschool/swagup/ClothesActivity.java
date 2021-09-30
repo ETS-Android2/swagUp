@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,10 +28,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
-import com.moringaschool.swagup.adapters.ImagesAdapter;
 import com.moringaschool.swagup.adapters.SuggestedAdapter;
+import com.moringaschool.swagup.adapters.WallpaperAdapter;
+import com.moringaschool.swagup.models.SuggestedModel;
+import com.moringaschool.swagup.models.WallpaperModel;
 import com.moringaschool.swagup.interfaces.RecycleViewClickListener;
-import com.moringaschool.swagup.interfaces.RecyclerViewListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,8 +54,9 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
     RecyclerView recyclerView, topMostRecyclerView;
     RecyclerView.Adapter adapter;
-    ImagesAdapter imagesAdapter;
-    List<ImageModel> imagesModelList;
+    WallpaperAdapter wallpaperAdapter;
+    List<WallpaperModel> wallpaperModelList;
+
 
     ArrayList<SuggestedModel> suggestedModels = new ArrayList<>();
 
@@ -68,7 +71,7 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
     int pageNumber = 1;
 
-    String url = "https://api.pexels.com/v1/curated?page=" + pageNumber + "&per_page=25";
+    String url = "https://api.pexels.com/v1/curated?page=" + pageNumber + "&per_page=80";
     private Object ImagesAdapter;
 
     @Override
@@ -86,15 +89,13 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
         //navigation drawer profile
         View headerView = navigationView.getHeaderView(0);
 
-
-
         recyclerView = findViewById(R.id.recycleView);
         topMostRecyclerView = findViewById(R.id.suggestedRecyclerView);
 
-        imagesModelList = new ArrayList<>();
-        imagesAdapter = new ImagesAdapter(this, imagesModelList);
+        wallpaperModelList = new ArrayList<>();
+        wallpaperAdapter = new WallpaperAdapter(this, wallpaperModelList);
 
-        recyclerView.setAdapter((RecyclerView.Adapter) ImagesAdapter);
+        recyclerView.setAdapter(wallpaperAdapter);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -120,7 +121,7 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
                 if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
                     isScrolling = false;
-                    fetchImage();
+                    fetchWallpaper();
                 }
             }
         });
@@ -129,7 +130,9 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
         replaceTitle = (TextView) findViewById(R.id.topMostTitle);
 
-        fetchImage();
+        fetchWallpaper();
+
+        suggestedItems();
 
 
         searchEt = findViewById(R.id.searchEv);
@@ -138,6 +141,7 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View view) {
                 Toast.makeText(ClothesActivity.this, "search Button Clicked", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -156,10 +160,10 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
                 } else {
                     drawerLayout.openDrawer(GravityCompat.START);
 
-            }
-
                 }
-             });
+
+            }
+        });
         //animation in the drawer
         animateNavigationDrawer();
     }
@@ -201,10 +205,9 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerVisible(GravityCompat.START)){
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -236,20 +239,21 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
         topMostRecyclerView.setHasFixedSize(true);
         topMostRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        suggestedModels.add(new SuggestedModel(R.drawable.image3, "Trending"));
         suggestedModels.add(new SuggestedModel(R.drawable.a, "Men casual"));
-        suggestedModels.add(new SuggestedModel(R.drawable.b, "Women casual"));
+        suggestedModels.add(new SuggestedModel(R.drawable.c, "Women casual"));
         suggestedModels.add(new SuggestedModel(R.drawable.e, "Official wear"));
-        suggestedModels.add(new SuggestedModel(R.drawable.d, "Beach wear"));
-        suggestedModels.add(new SuggestedModel(R.drawable.e, "Men shoes"));
-        suggestedModels.add(new SuggestedModel(R.drawable.f, "Women shoes"));
-        suggestedModels.add(new SuggestedModel(R.drawable.g, "Fashion"));
+        suggestedModels.add(new SuggestedModel(R.drawable.d, "Trending"));
+        suggestedModels.add(new SuggestedModel(R.drawable.e, "Beach wear"));
+        suggestedModels.add(new SuggestedModel(R.drawable.f, "Men shoes"));
+        suggestedModels.add(new SuggestedModel(R.drawable.g, "Women shoes"));
+        suggestedModels.add(new SuggestedModel(R.drawable.b, "Fashion"));
+        suggestedModels.add(new SuggestedModel(R.drawable.image2, "Travel"));
 
-
-
+        adapter = new SuggestedAdapter(suggestedModels, ClothesActivity.this);
+        topMostRecyclerView.setAdapter(adapter);
     }
 
-    private void fetchImage() {
+    private void fetchWallpaper() {
         //fetch image url and name from the pexels api
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
@@ -258,7 +262,7 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
                     public void onResponse(String response) {
 
                         progressBar.setVisibility(View.GONE);
-                           try {
+                        try {
                             JSONObject JsonObject = new JSONObject(response);
                             JSONArray jsonArray = JsonObject.getJSONArray("photos");
 
@@ -273,11 +277,12 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
                                 String originalUrl = objectImage.getString("original");
                                 String mediumUrl = objectImage.getString("medium");
 
-                                ImageModel imageModel = new ImageModel(id, originalUrl, mediumUrl, photographerName);
-                                imagesModelList.add(imageModel);
+
+                                WallpaperModel wallpaperModel = new WallpaperModel(id, originalUrl, mediumUrl, photographerName);
+                                wallpaperModelList.add(wallpaperModel);
 
                             }
-                            imagesAdapter.notifyDataSetChanged();
+                            wallpaperAdapter.notifyDataSetChanged();
                             pageNumber++;
 
                         } catch (JSONException e) {
@@ -294,10 +299,8 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-
-
                 HashMap<String, String> params = new HashMap<String, String>();
-                params.put("Authorization","563492ad6f91700001000001fbc5d384685a46609f2807fe967b7787");
+                params.put("Authorization", "563492ad6f91700001000001fbc5d384685a46609f2807fe967b7787");
                 return params;
 
             }
@@ -307,59 +310,66 @@ public class ClothesActivity extends AppCompatActivity implements NavigationView
 
     }
 
-                        @Override
-                        public void onItemClick (int position){
-                            progressBar.setVisibility(View.VISIBLE);
-                            if(position == 0) {
-                                replaceTitle.setText("Trending");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=trending";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }else if (position == 1) {
-                                replaceTitle.setText("Men casual");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=men casual";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }else if (position == 2) {
-                                replaceTitle.setText("women casual");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=women casual";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }else if (position == 3) {
-                                replaceTitle.setText("official wear");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=official wear";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }else if (position == 4) {
-                                replaceTitle.setText("beach wear");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=beach wear";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }else if (position == 5) {
-                                replaceTitle.setText("men shoes");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=men shoes";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }else if (position == 6) {
-                                replaceTitle.setText("women shoes");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=women shoes";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }else if (position == 7) {
-                                replaceTitle.setText("fashion");
-                                url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=fashion";
-                                imagesModelList.clear();
-                                fetchImage();
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        }
+    @Override
+    public void onItemClick(int position) {
+        progressBar.setVisibility(View.VISIBLE);
+        if (position == 0) {
+            replaceTitle.setText("Men casual ");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=men casual";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 1) {
+            replaceTitle.setText("Women casual");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=women casual";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 2) {
+            replaceTitle.setText("official wear");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=official wear";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 3) {
+            replaceTitle.setText("trending");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=trending";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 4) {
+            replaceTitle.setText("beach wear");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=beach wear";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 5) {
+            replaceTitle.setText("men shoes");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=men shoes";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 6) {
+            replaceTitle.setText("women shoes");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=5&query=women shoes";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 7) {
+            replaceTitle.setText("fashion");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=fashion";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+        } else if (position == 8) {
+            replaceTitle.setText("travel");
+            url = "https://api.pexels.com/v1/search/?page=" + pageNumber + "&per_page=80&query=travel";
+            wallpaperModelList.clear();
+            fetchWallpaper();
+            progressBar.setVisibility(View.GONE);
+
+        }
 
 
+    }
 }

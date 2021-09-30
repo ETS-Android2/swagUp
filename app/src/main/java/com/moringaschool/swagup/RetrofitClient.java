@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit;
-    private static String BASE_URL = "https://kohls.p.rapidapi.com/";
+    private static String BASE_URL = "https://api.pexels.com/v1/";
 
     public RetrofitClient() throws IOException {
     }

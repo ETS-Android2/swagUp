@@ -1,12 +1,17 @@
 package com.moringaschool.swagup;
 
 public class User {
-    String name,message;
-    int imageid;
 
-    public User(String name, String message, int imageid) {
-        this.name = name;
-        this.message = message;
-        this.imageid = imageid;
+   public String fullName,age, email;
+
+    public User(){
+
+    }
+
+
+    public User (String fullName, String age, String email) {
+        this.fullName = fullName;
+        this.age = age;
+        this.email = email;
     }
 }
