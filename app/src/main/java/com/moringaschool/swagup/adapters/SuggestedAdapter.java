@@ -64,6 +64,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.Sugg
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                   
                     clickListener.onItemClick(getBindingAdapterPosition());
                 }
             });

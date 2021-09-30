@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SwagUp">
         <activity
+            android:name=".FullScreenWallpaper"
+            android:exported="true" />
+        <activity
             android:name=".AnimationActivity"
             android:exported="true" />
         <activity
